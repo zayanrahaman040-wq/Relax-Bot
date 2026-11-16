@@ -15,6 +15,7 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 @bot.event
 async def on_ready():
     print(f"Bot online come {bot.user}")
+    print(f"Groq key presente: {bool(CHIAVE_GROQ)}")
 
 @bot.event
 async def on_message(message):
@@ -33,7 +34,7 @@ async def on_message(message):
     async with message.channel.typing():
         try:
             risposta = client_groq.chat.completions.create(
-                model="llama-3.1-8b-instant",
+                model="openai/gpt-oss-20b",
                 messages=[
                     {"role": "system", "content": "Sei l'assistente AI di Castrezzato RP, server RP su Roblox. Rispondi in italiano, corto, simpatico e utile. Aiuta con regole, ticket, staff, problemi in game. Se è un problema serio, dì di aprire un ticket."},
                     {"role": "user", "content": domanda}
@@ -41,8 +42,9 @@ async def on_message(message):
                 max_tokens=500
             )
             await message.channel.send(risposta.choices[0].message.content[:2000])
-        except:
-            await message.channel.send("Scusa, ho avuto un problema. Riprova tra poco!")
+        except Exception as e:
+            print(f"ERRORE GROQ: {e}")
+            await message.channel.send(f"Errore: {e}")
 
     await bot.process_commands(message)
 
