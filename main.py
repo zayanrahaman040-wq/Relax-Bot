@@ -33,7 +33,7 @@ async def on_message(message):
     async with message.channel.typing():
         try:
             risposta = client_groq.chat.completions.create(
-                model="llama-3.3-70b-versatile",
+                model="llama-3.1-8b-instant",
                 messages=[
                     {"role": "system", "content": "Sei l'assistente AI di Castrezzato RP, server RP su Roblox. Rispondi in italiano, corto, simpatico e utile. Aiuta con regole, ticket, staff, problemi in game. Se è un problema serio, dì di aprire un ticket."},
                     {"role": "user", "content": domanda}
