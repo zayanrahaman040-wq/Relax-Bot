@@ -494,5 +494,5 @@ async def verify(ctx):
         await ctx.author.add_roles(r)
         await ctx.send("Verificato!")
     else:
-        await ctx.send("Ruolo Verificato non trovato")
-        bot.run(TOKEN_DISCORD)
+        await ctx.send("Ruolo Verificato no trovato")
+bot.run(TOKEN_DISCORD)
