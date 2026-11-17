@@ -495,3 +495,4 @@ async def verify(ctx):
         await ctx.send("Verificato!")
     else:
         await ctx.send("Ruolo Verificato non trovato")
+        bot.run(TOKEN_DISCORD)
