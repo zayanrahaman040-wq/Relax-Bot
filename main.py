@@ -494,4 +494,4 @@ async def verify(ctx):
         await ctx.author.add_roles(r)
         await ctx.send("Verificato!")
     else:
-        await ctx.send("Ruolo Verificato non trovat
+        await ctx.send("Ruolo Verificato non trovato")
